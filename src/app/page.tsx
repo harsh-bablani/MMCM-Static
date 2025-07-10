@@ -1,9 +1,29 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import Background3D from '../components/Background3D';
+import dynamic from 'next/dynamic';
+import LoadingSpinner from '../components/LoadingSpinner';
+import LazyBackground3D from '../components/LazyBackground3D';
 import Header from '../components/Header';
-import ProductCard from '../components/ProductCard';
+import LazyProductCard from '../components/LazyProductCard';
+
+// Lazy load heavy components
+const LazyHeader = dynamic(() => import('../components/Header'), {
+  ssr: true,
+  loading: () => (
+    <div style={{
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      right: 0,
+      height: '80px',
+      background: 'rgba(255, 255, 255, 0.15)',
+      backdropFilter: 'blur(20px)',
+      zIndex: 1000,
+    }} />
+  ),
+});
 
 const products = [
   {
@@ -57,10 +77,30 @@ const products = [
 ];
 
 export default function Home() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate loading time and ensure fonts are loaded
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+    // Preload critical fonts
+    const fontLoader = document.fonts.ready.then(() => {
+      console.log('Fonts loaded');
+    });
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
+
   return (
     <div style={{ minHeight: '100vh' }}>
-      <Background3D />
-      <Header />
+      <LazyBackground3D />
+      <LazyHeader />
 
       {/* Hero Section */}
       <section id="home" className="section" style={{
@@ -162,7 +202,7 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h3 style={{ fontSize: '1.5rem', marginBottom: '20px', color: '#2c3e50' }}>
+              <h3 style={{ fontSize: '1.5rem', marginBottom: '20px', color: '#1e293b' }}>
                 Our Story
               </h3>
               <p style={{ fontSize: '1.05rem', lineHeight: '1.8', color: '#555' }}>
@@ -178,7 +218,7 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h3 style={{ fontSize: '1.5rem', marginBottom: '20px', color: '#2c3e50' }}>
+              <h3 style={{ fontSize: '1.5rem', marginBottom: '20px', color: '#1e293b' }}>
                 Our Mission
               </h3>
               <p style={{ fontSize: '1.05rem', lineHeight: '1.8', color: '#555' }}>
@@ -196,7 +236,7 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h3 style={{ fontSize: '1.5rem', marginBottom: '20px', color: '#2c3e50', textAlign: 'center' }}>
+            <h3 style={{ fontSize: '1.5rem', marginBottom: '20px', color: '#1e293b', textAlign: 'center' }}>
               Our Team
             </h3>
             <div className="grid grid-3">
@@ -205,7 +245,7 @@ export default function Home() {
                   width: '80px',
                   height: '80px',
                   borderRadius: '50%',
-                  background: 'linear-gradient(135deg, #87ceeb 0%, #5f9ea0 100%)',
+                  background: 'linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%)',
                   margin: '0 auto 15px',
                   display: 'flex',
                   alignItems: 'center',
@@ -216,15 +256,15 @@ export default function Home() {
                 }}>
                   GB
                 </div>
-                <h4 style={{ marginBottom: '5px', color: '#2c3e50' }}>Gorishankar Bablani</h4>
-                <p style={{ color: '#666', fontSize: '0.9rem' }}>Owner</p>
+                <h4 style={{ marginBottom: '5px', color: '#1e293b' }}>Gorishankar Bablani</h4>
+                <p style={{ color: '#64748b', fontSize: '0.9rem' }}>Owner</p>
               </div>
               <div style={{ textAlign: 'center' }}>
                 <div style={{
                   width: '80px',
                   height: '80px',
                   borderRadius: '50%',
-                  background: 'linear-gradient(135deg, #87ceeb 0%, #5f9ea0 100%)',
+                  background: 'linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%)',
                   margin: '0 auto 15px',
                   display: 'flex',
                   alignItems: 'center',
@@ -235,15 +275,15 @@ export default function Home() {
                 }}>
                   MB
                 </div>
-                <h4 style={{ marginBottom: '5px', color: '#2c3e50' }}>Mirchumal Bablani</h4>
-                <p style={{ color: '#666', fontSize: '0.9rem' }}>CEO</p>
+                <h4 style={{ marginBottom: '5px', color: '#1e293b' }}>Mirchumal Bablani</h4>
+                <p style={{ color: '#64748b', fontSize: '0.9rem' }}>CEO</p>
               </div>
               <div style={{ textAlign: 'center' }}>
                 <div style={{
                   width: '80px',
                   height: '80px',
                   borderRadius: '50%',
-                  background: 'linear-gradient(135deg, #87ceeb 0%, #5f9ea0 100%)',
+                  background: 'linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%)',
                   margin: '0 auto 15px',
                   display: 'flex',
                   alignItems: 'center',
@@ -254,8 +294,8 @@ export default function Home() {
                 }}>
                   GB
                 </div>
-                <h4 style={{ marginBottom: '5px', color: '#2c3e50' }}>Gourav Bablani</h4>
-                <p style={{ color: '#666', fontSize: '0.9rem' }}>Owner</p>
+                <h4 style={{ marginBottom: '5px', color: '#1e293b' }}>Gourav Bablani</h4>
+                <p style={{ color: '#64748b', fontSize: '0.9rem' }}>Owner</p>
               </div>
             </div>
           </motion.div>
@@ -282,7 +322,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <ProductCard {...product} />
+                <LazyProductCard {...product} />
               </motion.div>
             ))}
           </div>
@@ -308,29 +348,29 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h3 style={{ fontSize: '1.5rem', marginBottom: '20px', color: '#2c3e50' }}>
+              <h3 style={{ fontSize: '1.5rem', marginBottom: '20px', color: '#1e293b' }}>
                 Get In Touch
               </h3>
               <div style={{ marginBottom: '20px' }}>
-                <h4 style={{ color: '#5f9ea0', marginBottom: '10px' }}>📍 Address</h4>
+                <h4 style={{ color: '#3b82f6', marginBottom: '10px' }}>📍 Address</h4>
                 <p style={{ color: '#555', lineHeight: '1.6' }}>
                   Mirchumal Chothmal Sindhi Bazar, Nohar, Rajasthan 335523
                 </p>
               </div>
               <div style={{ marginBottom: '20px' }}>
-                <h4 style={{ color: '#5f9ea0', marginBottom: '10px' }}>📞 Phone</h4>
+                <h4 style={{ color: '#3b82f6', marginBottom: '10px' }}>📞 Phone</h4>
                 <a href="tel:+918000398836" style={{ color: '#555', textDecoration: 'none' }}>
                   +91 8000398836
                 </a>
               </div>
               <div style={{ marginBottom: '20px' }}>
-                <h4 style={{ color: '#5f9ea0', marginBottom: '10px' }}>✉️ Email</h4>
+                <h4 style={{ color: '#3b82f6', marginBottom: '10px' }}>✉️ Email</h4>
                 <a href="mailto:mmcm1601@gmail.com" style={{ color: '#555', textDecoration: 'none' }}>
                   mmcm1601@gmail.com
                 </a>
               </div>
               <div>
-                <h4 style={{ color: '#5f9ea0', marginBottom: '10px' }}>📍 Location</h4>
+                <h4 style={{ color: '#3b82f6', marginBottom: '10px' }}>📍 Location</h4>
                 <a
                   href="https://maps.app.goo.gl/jDDmaydchKJGs3hX9"
                   target="_blank"
@@ -348,23 +388,23 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h3 style={{ fontSize: '1.5rem', marginBottom: '20px', color: '#2c3e50' }}>
+              <h3 style={{ fontSize: '1.5rem', marginBottom: '20px', color: '#1e293b' }}>
                 Business Hours
               </h3>
               <div style={{ marginBottom: '20px' }}>
-                <h4 style={{ color: '#5f9ea0', marginBottom: '10px' }}>🕒 Monday - Saturday</h4>
+                <h4 style={{ color: '#3b82f6', marginBottom: '10px' }}>🕒 Monday - Saturday</h4>
                 <p style={{ color: '#555', fontSize: '1.1rem', fontWeight: '500' }}>
                   8:00 AM - 8:00 PM
                 </p>
               </div>
               <div style={{ marginBottom: '20px' }}>
-                <h4 style={{ color: '#5f9ea0', marginBottom: '10px' }}>🕒 Sunday</h4>
+                <h4 style={{ color: '#3b82f6', marginBottom: '10px' }}>🕒 Sunday</h4>
                 <p style={{ color: '#555', fontSize: '1.1rem', fontWeight: '500' }}>
                   8:00 AM - 1:00 PM
                 </p>
               </div>
               <div style={{
-                background: 'linear-gradient(135deg, #87ceeb 0%, #5f9ea0 100%)',
+                background: 'linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%)',
                 color: 'white',
                 padding: '20px',
                 borderRadius: '15px',
@@ -382,7 +422,7 @@ export default function Home() {
       {/* Footer */}
       <motion.footer
         style={{
-          background: 'linear-gradient(135deg, #2c3e50 0%, #5f9ea0 100%)',
+          background: 'linear-gradient(135deg, #1e293b 0%, #3b82f6 100%)',
           color: 'white',
           textAlign: 'center',
           padding: '40px 20px',
