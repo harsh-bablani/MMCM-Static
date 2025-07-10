@@ -8,10 +8,16 @@ interface ProductCardProps {
   category: string;
   imageUrl: string;
   description: string;
-  price?: string;
 }
 
-export default function ProductCard({ name, category, imageUrl, description, price }: ProductCardProps) {
+export default function ProductCard({ name, category, imageUrl, description }: ProductCardProps) {
+  const handleEnquire = () => {
+    // You can customize this to open a contact form, WhatsApp, or phone call
+    const message = `Hi, I'm interested in ${name} (${category}). Please provide pricing and availability.`;
+    const whatsappUrl = `https://wa.me/918000398836?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+  };
+
   return (
     <motion.div
       className="card"
@@ -76,25 +82,35 @@ export default function ProductCard({ name, category, imageUrl, description, pri
             fontSize: '0.9rem',
             color: '#666',
             lineHeight: '1.5',
-            marginBottom: '15px',
+            marginBottom: '20px',
           }}>
             {description}
           </p>
         </div>
 
-        {price && (
-          <div style={{
+        <motion.button
+          onClick={handleEnquire}
+          style={{
             background: 'linear-gradient(135deg, #87ceeb 0%, #5f9ea0 100%)',
             color: 'white',
-            padding: '8px 16px',
-            borderRadius: '20px',
-            fontSize: '1.1rem',
+            border: 'none',
+            padding: '12px 24px',
+            borderRadius: '25px',
+            fontSize: '1rem',
             fontWeight: '600',
+            cursor: 'pointer',
+            boxShadow: '0 4px 15px rgba(135, 206, 235, 0.3)',
+            transition: 'all 0.3s ease',
             alignSelf: 'center',
-          }}>
-            {price}
-          </div>
-        )}
+          }}
+          whileHover={{
+            transform: 'translateY(-2px)',
+            boxShadow: '0 6px 20px rgba(135, 206, 235, 0.4)',
+          }}
+          whileTap={{ scale: 0.95 }}
+        >
+          Enquire Now
+        </motion.button>
       </div>
     </motion.div>
   );

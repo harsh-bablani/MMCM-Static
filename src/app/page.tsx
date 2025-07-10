@@ -10,57 +10,49 @@ const products = [
     name: "Premium Almonds",
     category: "Dry Fruits",
     imageUrl: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=300&fit=crop",
-    description: "Premium quality almonds, rich in nutrients and perfect for healthy snacking.",
-    price: "₹450/kg"
+    description: "Premium quality almonds, rich in nutrients and perfect for healthy snacking."
   },
   {
     name: "Organic Cashews",
     category: "Dry Fruits",
     imageUrl: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=300&fit=crop",
-    description: "Organic cashews with natural sweetness and creamy texture.",
-    price: "₹650/kg"
+    description: "Organic cashews with natural sweetness and creamy texture."
   },
   {
     name: "Golden Raisins",
     category: "Dry Fruits",
     imageUrl: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=300&fit=crop",
-    description: "Sweet and nutritious golden raisins, perfect for desserts and snacking.",
-    price: "₹180/kg"
+    description: "Sweet and nutritious golden raisins, perfect for desserts and snacking."
   },
   {
     name: "Premium Walnuts",
     category: "Dry Fruits",
     imageUrl: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=300&fit=crop",
-    description: "Brain-boosting walnuts with rich omega-3 fatty acids.",
-    price: "₹750/kg"
+    description: "Brain-boosting walnuts with rich omega-3 fatty acids."
   },
   {
     name: "Toor Dal",
     category: "Pulses",
     imageUrl: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=300&fit=crop",
-    description: "High-quality toor dal, essential for traditional Indian cooking.",
-    price: "₹120/kg"
+    description: "High-quality toor dal, essential for traditional Indian cooking."
   },
   {
     name: "Moong Dal",
     category: "Pulses",
     imageUrl: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=300&fit=crop",
-    description: "Nutritious moong dal, perfect for healthy meals and soups.",
-    price: "₹140/kg"
+    description: "Nutritious moong dal, perfect for healthy meals and soups."
   },
   {
     name: "Chana Dal",
     category: "Pulses",
     imageUrl: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=300&fit=crop",
-    description: "Protein-rich chana dal, ideal for various Indian dishes.",
-    price: "₹110/kg"
+    description: "Protein-rich chana dal, ideal for various Indian dishes."
   },
   {
     name: "Masoor Dal",
     category: "Pulses",
     imageUrl: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=300&fit=crop",
-    description: "Quick-cooking masoor dal, perfect for everyday meals.",
-    price: "₹95/kg"
+    description: "Quick-cooking masoor dal, perfect for everyday meals."
   }
 ];
 
