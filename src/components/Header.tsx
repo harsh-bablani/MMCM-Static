@@ -63,10 +63,10 @@ export default function Header() {
 
         <div style={{
           display: 'flex',
-          gap: '35px',
+          gap: '30px',
           alignItems: 'center',
         }}>
-          {['home', 'about', 'items', 'contact'].map((item) => (
+          {['home', 'about', 'services', 'items', 'contact'].map((item) => (
             <motion.button
               key={item}
               onClick={() => scrollToSection(item)}

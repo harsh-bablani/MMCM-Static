@@ -7,6 +7,7 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import LazyBackground3D from '../components/LazyBackground3D';
 import Header from '../components/Header';
 import LazyProductCard from '../components/LazyProductCard';
+import ServicesSection from '../components/ServicesSection';
 
 // Lazy load heavy components
 const LazyHeader = dynamic(() => import('../components/Header'), {
@@ -301,6 +302,9 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+
+      {/* Services Section */}
+      <ServicesSection />
 
       {/* Items Section */}
       <section id="items" className="section">
