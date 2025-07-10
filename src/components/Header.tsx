@@ -30,12 +30,12 @@ export default function Header() {
         left: 0,
         right: 0,
         zIndex: 1000,
-        padding: isScrolled ? '10px 20px' : '20px',
-        transition: 'all 0.3s ease',
+        padding: isScrolled ? '12px 20px' : '20px',
+        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
       }}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
     >
       <nav style={{
         display: 'flex',
@@ -46,13 +46,15 @@ export default function Header() {
       }}>
         <motion.div
           style={{
-            fontSize: isScrolled ? '1.5rem' : '2rem',
+            fontSize: isScrolled ? '1.6rem' : '2.2rem',
             fontWeight: '700',
-            background: 'linear-gradient(135deg, #2c3e50 0%, #5f9ea0 100%)',
+            background: 'linear-gradient(135deg, #1e293b 0%, #3b82f6 50%, #60a5fa 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text',
-            transition: 'font-size 0.3s ease',
+            transition: 'font-size 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+            fontFamily: 'Playfair Display, serif',
+            letterSpacing: '-0.02em',
           }}
           whileHover={{ scale: 1.05 }}
         >
@@ -61,7 +63,7 @@ export default function Header() {
 
         <div style={{
           display: 'flex',
-          gap: '30px',
+          gap: '35px',
           alignItems: 'center',
         }}>
           {['home', 'about', 'items', 'contact'].map((item) => (
@@ -71,21 +73,40 @@ export default function Header() {
               style={{
                 background: 'none',
                 border: 'none',
-                color: '#2c3e50',
+                color: '#1e293b',
                 fontSize: '1rem',
                 fontWeight: '500',
                 cursor: 'pointer',
-                padding: '8px 16px',
-                borderRadius: '20px',
-                transition: 'all 0.3s ease',
+                padding: '10px 18px',
+                borderRadius: '25px',
+                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                fontFamily: 'Poppins, sans-serif',
+                position: 'relative',
+                overflow: 'hidden',
               }}
               whileHover={{
-                backgroundColor: 'rgba(135, 206, 235, 0.2)',
+                backgroundColor: 'rgba(96, 165, 250, 0.1)',
                 scale: 1.05,
+                color: '#3b82f6',
               }}
               whileTap={{ scale: 0.95 }}
             >
-              {item.charAt(0).toUpperCase() + item.slice(1)}
+              <span style={{ position: 'relative', zIndex: 1 }}>
+                {item.charAt(0).toUpperCase() + item.slice(1)}
+              </span>
+              <motion.div
+                style={{
+                  position: 'absolute',
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  height: '2px',
+                  background: 'linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%)',
+                  transform: 'scaleX(0)',
+                }}
+                whileHover={{ scaleX: 1 }}
+                transition={{ duration: 0.3 }}
+              />
             </motion.button>
           ))}
         </div>

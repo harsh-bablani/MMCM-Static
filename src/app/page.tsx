@@ -84,43 +84,50 @@ export default function Home() {
         >
           <motion.h1
             style={{
-              fontSize: '3.5rem',
+              fontSize: '4rem',
               fontWeight: '700',
-              marginBottom: '20px',
-              background: 'linear-gradient(135deg, #2c3e50 0%, #5f9ea0 100%)',
+              marginBottom: '25px',
+              background: 'linear-gradient(135deg, #1e293b 0%, #3b82f6 50%, #60a5fa 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
+              fontFamily: 'Playfair Display, serif',
+              letterSpacing: '-0.02em',
+              lineHeight: '1.1',
             }}
             initial={{ scale: 0.8 }}
             animate={{ scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
           >
             Mirchumal Chothmal
           </motion.h1>
           <motion.h2
             style={{
-              fontSize: '1.8rem',
-              fontWeight: '400',
-              marginBottom: '15px',
-              color: '#5f9ea0',
+              fontSize: '2rem',
+              fontWeight: '500',
+              marginBottom: '20px',
+              color: '#3b82f6',
+              fontFamily: 'Poppins, sans-serif',
+              letterSpacing: '0.02em',
             }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
+            transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
           >
             Premium Kiryana & Dry-Fruits Wholesaler
           </motion.h2>
           <motion.p
             style={{
-              fontSize: '1.2rem',
-              color: '#666',
-              marginBottom: '30px',
+              fontSize: '1.3rem',
+              color: '#64748b',
+              marginBottom: '35px',
               fontStyle: 'italic',
+              fontFamily: 'Playfair Display, serif',
+              fontWeight: '400',
             }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
+            transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
           >
             श्री गणेशाय नमः • Quality Since 1985
           </motion.p>
