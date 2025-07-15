@@ -3,7 +3,7 @@
 import { useState, useEffect, Suspense } from 'react';
 import dynamic from 'next/dynamic';
 
-// Dynamically import the 3D background with no SSR
+// Dynamically import the 3D background
 const Background3D = dynamic(() => import('./Background3D'), {
   ssr: false,
   loading: () => (
